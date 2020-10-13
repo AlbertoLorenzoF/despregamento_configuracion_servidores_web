@@ -4,7 +4,9 @@
 
 La primera vez que realicéis una práctica será necesario configurar el entorno del sistema en el que se ejecutará. Una vez hecho se usará para todas las demás. Para desplegar el sistema para las prácticas seguid las instrucciones en:
 
-[REQUISITOS](REQUISITOS.md)
+[REQUISITOS](REQUISITOS.md) 
+Estos pasos ya están hechos en la máquina virtual que os paso
+Lo único que tenéis que hacer es crearos una carpeta compartida en el virtual box para poder manipular los ficheros en vuestro ordenador local. 
 
 ## Escenario
 

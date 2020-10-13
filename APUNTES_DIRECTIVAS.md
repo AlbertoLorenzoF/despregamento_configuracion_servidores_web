@@ -12,52 +12,80 @@ Se queremos parar e relanzar o servizo:
 Para ver si el servicio está activo podemos ejecutar:  
 `sudo systemctl | grep apache`
 
-## Directivas de configuración básica
-
-### Listen 
-
-Esta directiva indica a través de que portos e interfaces IP aceptará peticións. Por defecto, responde peticións en todas as as interfaces, no porto que se indique. Se encontra no ficheiro /etc/apache2/ports.conf
-#### Exemplos
-	Para facer que o servidor acepte conexións nos portos 80 e 8080:
-    `Listen 80`
-    `Listen 8080`
+## Directivas de configuración básica del fichero de apache2.conf
 
 ### ServerRoot 
 
-Especifica a localización do directorio raíz onde ser atopa instalado Apache. Esta directiva non debería cambiar a non ser que se mova o cartafol de instalación de Apache a outra loca-lización. Encóntrase no ficheiro /etc/apache2/apache2.conf 
+Especifica a localización do directorio raíz onde ser atopa instalado Apache. Esta directiva non debería cambiar a non ser que se mova o cartafol de instalación de Apache a outra localización.
 
 #### Exemplos
 	ServerRoot /etc/apache2
 
 ### Include 
 
-Permite que se inclúan outros arquivos de configuración en tempo de execución. A ruta a estes arquivos de configuración poden ser absolutas ou relativas con respecto ao directorio indicado en ServerRoot. Encóntrase no ficheiro /etc/apache2/apache2.conf 
+Permite que se inclúan outros arquivos de configuración en tempo de execución. A ruta a estes arquivos de configuración poden ser absolutas ou relativas con respecto ao directorio indicado en ServerRoot. 
 
 #### Exemplos
     Include ports.conf
-    
-### DocumentRoot 
 
-Indica o directorio desde o que Apache vai servir os arquivos. O servidor engade a ruta indi-cada na URL a este directorio.
-Todos os directorios que vai servir Apache deben ter permisos de lectura e execución para todos os usuarios e todos os arquivos que serve deben ter permiso de lectura. Recordemos que os permisos de arquivos e directorios se cambian en Linux co comando chmod.
+###  Timeout
+Define, en segundos, el tiempo que el servidor esperará por recibir y transmitir durante la comunicación. Timeout está configurado por defecto a 300 segundos, lo cual es apropiado para la mayoría de las situaciones. El usuario puede realizar una única petición pero esa petición puede generar más de una petición. 
+#### Ejemplos
+	Timeout 300 
 
-#### Exemplos
-    Para un valor
-    DocumentRoot /var/www/html
-    Se a URL solicitada é http://www.meuservidor.com/proba/index.html Apache servirá o ficheiro index.html que se atopa en /var/www/html/proba
+###  KeepAlive
+ Define si las conexiones persistentes están activadas. Por defecto están activadas. En una misma conexión TCP podemos generar varias solicitudes y varias respuestas HTTP. 
+#### Ejemplos
+	KeepAlive On  
+
+### MaxKeepAliveRequests
+Establece el número máximo de peticiones permitidas por cada conexión persistente. Por defecto está establecido como 100. Si el cliente solicita más de 100 peticiones HTTP se cierra la conexión TCP y se vuelve a abrir. 
+
+#### Ejemplos
+	MaxKeepAliveRequests 100
+
+###  KeepAliveTimeout
+Establece el número de segundos que el servidor esperará tras haber dado servicio a una petición, antes de cerrar la conexión. Por defecto 5 segundos. Una vez que se abre la conexión TCP tiene 5 segundos para realizar peticiones, sino se cerrará. Esto tiene que ver con el rendimiento del sistema, para que no tener procesos ocupados esperanod a que le envíen peticiones. 
+#### Ejemplos
+	KeepAliveTimeout 5
+###  User
+ Define el usuario que ejecuta los procesos de Apache2. Por defecto wwwdata. Se define en una variable de entorno definida en el fichero /etc/apache2/envvars. 
+ #### Ejemplo
+    User ${APACHE_RUN_USER}
+###  Group
+ Define el grupo al que corresponde el usuario.
+  #### Ejemplo
+    User ${APACHE_RUN_GROUP}
 
 ### ErrorLog 
 
-Especifica a localización do ficheiro que contén o rexistro de erros. Se a ruta que se indica non é absoluta, considerarase relativa ao ServerRoot. Por defecto atópanse no cartafol logs dentro de ServerRoot.
-
+Especifica a localización do ficheiro que contén o rexistro de erros. 
 #### Exemplos
-    ErrorLog /var/log/httpd/error_log
+    ErrorLog /var/log/apache2/error_log
+###  LogLevel
+ Controla el nivel de información que se guarda en los ficheros de registro o logs. Apache tiene distintos ficheros de log, aquí definimos el nivel de información que queremos guardar. 
+   #### Ejemplo
+    loglevel warn
+###  LogFormat
+ Controla el formato de información que se va a guardar en los ficheros logs.
+   #### Ejemplo
+    logformat "%v:%p ..."
+###  Directory o DirectoryMatch 
+ Declara un contexto para un directorio y todos sus directorios. DirectoryMatch es para utilizar un expresión regular para indicar los directorios. Son las opciones que le vamos a dar a un directorio y a todos sus subdirectorios. 
+   #### Ejemplo
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+        Require all denied 
+    </Directory>
+###  Files o FilesMatch
+Declara un contexto para un conjunto de ficheros. Son las opciones que le vamos a dar a un Fichero o a un conjunto de ficheros. 
+  #### Ejemplo
+    <FilesMatch "^/.ht>
+      Require all denied 
+    </Directory>
 
-### DirectoryIndex 
 
-Especifica o ficheiro por defecto que se servirá para cada directorio, no caso de que non se especifique ningún na URL. Por defecto é index.html. 
-Poden indicarse varios ficheiros. A orde co que se especifica o nome de ficheiro determinará a prioridade á hora de decidir que ficheiro é o que se amosa.
 
-#### Exemplos
-   DirectoryIndex index.html indice.html index.php
+No todas las directivas de configuración se encuentran en este documento también se encuentran en los ficheros .conf en las carpetas enabled.  
 
