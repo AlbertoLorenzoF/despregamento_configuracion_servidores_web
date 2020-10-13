@@ -1,4 +1,4 @@
-# Requisitos para las prácticas de SXE
+# Requisitos 
 
 ## Pasos previos a realizar
 
