@@ -1,0 +1,15 @@
+version: '3'
+services:
+#Service apache toma el Dockerfile del directorio ./apache
+ apache:
+  build: ./apache
+#Mapeo de puerto 8080 del host al 80 del container
+  ports:
+  - "8080:80"
+  hostname: apache
+#Mapea el volumen apache_data al directorio de datos de apache
+  volumes:
+  - apache_data:/var/www/html
+
+volumes:
+  apache_data:

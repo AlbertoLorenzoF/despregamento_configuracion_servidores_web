@@ -1,0 +1,17 @@
+version: '3'
+services:
+#Service apache toma el Dockerfile del directorio ./apache
+ lamp:
+  build: ./lamp
+#Mapeo de puerto 8080 del host al 80 del container
+  ports:
+  - "8081:80"
+  hostname: lamp
+#Mapea el volumen apache_data al directorio de datos de apache
+  volumes:
+  - apache_data:/var/www/html
+  - mariadb_data:/var/lib/mysql
+
+volumes:
+  apache_data:
+  mariadb_data:
