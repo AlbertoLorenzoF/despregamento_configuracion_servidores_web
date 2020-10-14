@@ -1,6 +1,6 @@
 FROM debian:buster
 
-MAINTAINER javierfp <javierfp@iessanclemente.net>
+MAINTAINER sabelassm <sabela@iessanclemente.net>
 
 ENV TERM xterm
 ENV PASS=abc123.

@@ -6,7 +6,7 @@ La primera vez que realicéis una práctica será necesario configurar el entorn
 
 [REQUISITOS](REQUISITOS.md) 
 Estos pasos ya están hechos en la máquina virtual que os paso
-Lo único que tenéis que hacer es crearos una carpeta compartida en el virtual box para poder manipular los ficheros en vuestro ordenador local. 
+Lo único que tenéis que hacer es crearos una carpeta compartida en el virtual box llamada "despliegue" para poder manipular los ficheros en vuestro ordenador local. 
 
 ## Escenario
 
