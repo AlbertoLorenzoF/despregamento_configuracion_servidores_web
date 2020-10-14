@@ -14,17 +14,17 @@ Lo único que tenéis que hacer es crearos una carpeta compartida en el virtual 
 
 En este paso hay que determinar el rango en el que opera la red local. Si desplegáis la máquina virtual en la red de vuestra casa tendréis que determinar el rango de IPs que utilizáis en la red.
 Por ejemplo, en mi caso:
-•	La red es la 192.168.0.0/24 es decir 192.168.0.0 con máscara 255.255.255.0
-•	Usaré para la máquina virtual la dirección IP 192.168.0.10
-•	La dirección IP de la puerta de enlace (router) es 192.168.0.1
-•	Utilizaré como servidor DNS el servidor público de IP 8.8.8.8
+-	La red es la 192.168.0.0/24 es decir 192.168.0.0 con máscara 255.255.255.0
+-	Usaré para la máquina virtual la dirección IP 192.168.0.10
+-	La dirección IP de la puerta de enlace (router) es 192.168.0.1
+-	Utilizaré como servidor DNS el servidor público de IP 8.8.8.8
 #### NOTAS
 - Deberéis adaptar vuestra configuración de red a vuestro caso particular, para ello deberéis conocer el direccionamiento interno que usáis en la red local.
 - Es IMPORTANTE que la dirección IP que asignéis a la máquina virtual, en mi caso 192.168.0.10, esté libre y no asignada a algún otra máquina en la red.
 
 ### Edición del archivo de configuración de red en Debian
 A continuación, tras haber determinado los datos de la red, vamos a editar el archivo de configuración de red de Debian en la máquina virtual, para que tome la información de configuación anterior. El archivo a editar es /etc/network/interfaces. Editamos ese archivo con un editor de texto, por ejemplo nano:
-nano /etc/network/interfaces
+`nano /etc/network/interfaces`
 La sección de la interfaz de red correspondiente quedaría en mi caso:
 
 #### The primary network interface
