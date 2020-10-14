@@ -24,16 +24,23 @@ Por ejemplo, en mi caso:
 
 ### Edición del archivo de configuración de red en Debian
 A continuación, tras haber determinado los datos de la red, vamos a editar el archivo de configuración de red de Debian en la máquina virtual, para que tome la información de configuación anterior. El archivo a editar es /etc/network/interfaces. Editamos ese archivo con un editor de texto, por ejemplo nano:
+
 `nano /etc/network/interfaces`
+
 La sección de la interfaz de red correspondiente quedaría en mi caso:
 
 #### The primary network interface
-allow-hotplug enp0s3
-iface enp0s3 inet static
-address 192.168.0.10
-netmask 255.255.255.0
-gateway 192.168.0.1
-dns-nameservers 8.8.8.8
+`allow-hotplug enp0s3`
+
+`iface enp0s3 inet static`
+
+`address 192.168.0.10`
+
+`netmask 255.255.255.0`
+
+`gateway 192.168.0.1`
+
+`dns-nameservers 8.8.8.8`
 
 una vez editado el archivo guardamos los cambios, salimos del editor y o bien reiniciamos la máquina, o bien ejecutamos:
 
