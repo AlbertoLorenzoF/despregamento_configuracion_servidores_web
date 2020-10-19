@@ -5,9 +5,13 @@
 ### Realiza copias de seguridade dos ficheiros de configuración (apache2.conf, ports.conf, sites-available/000-default.conf).
 
 cd /etc/apache2/
+
 sudo cp ports.conf ports.conf.copia
+
 cd sites-available/
+
 sudo cp 000-default.conf 000-default.conf.copia
+
 
 
 ### No directorio /var/www/html, crea os seguintes arquivos (co contido que prefiras, unicamente debe servir para distinguir uns arquivos de outros) e directorios:
